@@ -9927,7 +9927,7 @@
                     }
 
                     if (typeof requirejs !== 'undefined' && requirejs.toUrl) {
-                        fallbackWorkerSrc = requirejs.toUrl('extracthighlights-dist/build/pdf.worker.js');
+                        fallbackWorkerSrc = requirejs.toUrl('extracthighlights-dist/build/extracthighlights.worker.js');
                     }
 
                     var dynamicLoaderSupported = typeof requirejs !== 'undefined' && requirejs.load;
@@ -9936,7 +9936,7 @@
                             require.ensure([], function () {
                                 try {
                                     var worker;
-                                    worker = require('./pdf.worker.js');
+                                    worker = require('./extracthighlights.worker.js');
                                     resolve(worker.WorkerMessageHandler);
                                 } catch (ex) {
                                     reject(ex);
@@ -9945,7 +9945,7 @@
                         });
                     } : dynamicLoaderSupported ? function () {
                         return new Promise(function (resolve, reject) {
-                            requirejs(['extracthighlights-dist/build/pdf.worker'], function (worker) {
+                            requirejs(['extracthighlights-dist/build/extracthighlights.worker'], function (worker) {
                                 try {
                                     resolve(worker.WorkerMessageHandler);
                                 } catch (ex) {
