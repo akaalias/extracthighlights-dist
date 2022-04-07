@@ -15575,7 +15575,8 @@
                                         var quad = this.charInAnnot(annot, charDims);
 
                                         if(quad >= 0) {
-                                            this.annotations[j].highlightedText += glyph.unicode;
+                                            // Checks of the next glyph in the array is a number – which indicates that it is a space – and if it is adds the unicode character and a space 
+                                            this.annotations[j].highlightedText += (0, _util.isNum)(glyphs[i+1]) ? glyph.unicode+" " : glyph.unicode;
                                         }
 
                                         this.updateMarkup(annot, quad, glyph, charDims, false);
